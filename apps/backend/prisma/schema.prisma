@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum RequestStatus {
+  PENDING
+  ISSUED
+  CANCELLED
+}
+
+model Project {
+  id    String @id @default(uuid())
+  name  String @unique
+  lines Line[]
+
+  @@map("projects")
+}
+
+model Line {
+  id        String  @id @default(uuid())
+  name      String
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id])
+  posts     Post[]
+
+  @@unique([name, projectId])
+  @@map("lines")
+}
+
+model Post {
+  id     String @id @default(uuid())
+  number String
+  lineId String
+  line   Line   @relation(fields: [lineId], references: [id])
+
+  postComponents PostComponent[]
+  requests       ComponentRequest[]
+
+  @@unique([number, lineId])
+  @@map("posts")
+}
+
+model Component {
+  id        String @id @default(uuid())
+  reference String @unique
+  category  String
+
+  postComponents PostComponent[]
+  requests       ComponentRequest[]
+
+  @@map("components")
+}
+
+model PostComponent {
+  id          String    @id @default(uuid())
+  postId      String
+  post        Post      @relation(fields: [postId], references: [id])
+  componentId String
+  component   Component @relation(fields: [componentId], references: [id])
+  qrCode      String    @unique
+  isActive    Boolean   @default(true)
+
+  @@unique([postId, componentId])
+  @@map("post_components")
+}
+
+model ComponentRequest {
+  id          String        @id @default(uuid())
+  componentId String
+  component   Component     @relation(fields: [componentId], references: [id])
+  postId      String
+  post        Post          @relation(fields: [postId], references: [id])
+  notes       String?
+  status      RequestStatus @default(PENDING)
+  requestedAt DateTime      @default(now())
+  issuedAt    DateTime?
+  issuedBy    String?
+  cancelledAt DateTime?
+
+  @@index([status])
+  @@index([requestedAt])
+  @@map("component_requests")
+}

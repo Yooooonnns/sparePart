@@ -1,0 +1,21 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 192 192'>
+  <rect width='192' height='192' rx='34.56' fill='#030712'/>
+  <!-- QR corner top-left -->
+  <rect x='28.799999999999997' y='28.799999999999997' width='57.599999999999994' height='57.599999999999994' rx='7.68' fill='none' stroke='#60a5fa' stroke-width='10.56'/>
+  <rect x='46.08' y='46.08' width='23.04' height='23.04' rx='3.84' fill='#60a5fa'/>
+  <!-- QR corner top-right -->
+  <rect x='105.60000000000001' y='28.799999999999997' width='57.599999999999994' height='57.599999999999994' rx='7.68' fill='none' stroke='#60a5fa' stroke-width='10.56'/>
+  <rect x='122.88' y='46.08' width='23.04' height='23.04' rx='3.84' fill='#60a5fa'/>
+  <!-- QR corner bottom-left -->
+  <rect x='28.799999999999997' y='105.60000000000001' width='57.599999999999994' height='57.599999999999994' rx='7.68' fill='none' stroke='#60a5fa' stroke-width='10.56'/>
+  <rect x='46.08' y='122.88' width='23.04' height='23.04' rx='3.84' fill='#60a5fa'/>
+  <!-- Data dots bottom-right -->
+  <rect x='107.52000000000001' y='107.52000000000001' width='15.36' height='15.36' rx='1.92' fill='#60a5fa'/>
+  <rect x='130.56' y='107.52000000000001' width='15.36' height='15.36' rx='1.92' fill='#60a5fa'/>
+  <rect x='153.60000000000002' y='107.52000000000001' width='15.36' height='15.36' rx='1.92' fill='#60a5fa'/>
+  <rect x='107.52000000000001' y='130.56' width='15.36' height='15.36' rx='1.92' fill='#60a5fa'/>
+  <rect x='130.56' y='130.56' width='15.36' height='15.36' rx='1.92' fill='#60a5fa'/>
+  <rect x='153.60000000000002' y='130.56' width='15.36' height='15.36' rx='1.92' fill='#60a5fa'/>
+  <rect x='107.52000000000001' y='153.60000000000002' width='15.36' height='15.36' rx='1.92' fill='#60a5fa'/>
+  <rect x='153.60000000000002' y='153.60000000000002' width='15.36' height='15.36' rx='1.92' fill='#60a5fa'/>
+</svg>

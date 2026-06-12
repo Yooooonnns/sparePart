@@ -1,0 +1,12 @@
+{
+  "name": "spare-parts",
+  "private": true,
+  "scripts": {
+    "install:all": "cd apps/backend && npm install && cd ../frontend && npm install",
+    "dev:backend": "cd apps/backend && npm run start:dev",
+    "dev:frontend": "cd apps/frontend && npm run dev",
+    "db:migrate": "cd apps/backend && npx prisma migrate dev",
+    "db:generate": "cd apps/backend && npx prisma generate",
+    "db:seed": "cd apps/backend && npm run db:seed"
+  }
+}
