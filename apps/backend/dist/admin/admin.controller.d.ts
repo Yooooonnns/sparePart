@@ -1,11 +1,8 @@
 import { PrismaService } from '../prisma/prisma.service';
-import { RequestsGateway } from '../gateway/requests.gateway';
-import { RequestStatus } from '@prisma/client';
-export declare class RequestsController {
+export declare class AdminController {
     private readonly prisma;
-    private readonly gateway;
-    constructor(prisma: PrismaService, gateway: RequestsGateway);
-    list(status?: RequestStatus, postId?: string, lineId?: string, projectId?: string, from?: string, to?: string): import(".prisma/client").Prisma.PrismaPromise<({
+    constructor(prisma: PrismaService);
+    list(postId?: string, lineId?: string, projectId?: string): import(".prisma/client").Prisma.PrismaPromise<({
         post: {
             line: {
                 project: {
@@ -13,14 +10,14 @@ export declare class RequestsController {
                     name: string;
                 };
             } & {
+                projectId: string;
                 id: string;
                 name: string;
-                projectId: string;
             };
         } & {
             number: string;
-            id: string;
             lineId: string;
+            id: string;
         };
         component: {
             id: string;
@@ -31,50 +28,13 @@ export declare class RequestsController {
         id: string;
         postId: string;
         componentId: string;
-        status: import(".prisma/client").$Enums.RequestStatus;
-        notes: string | null;
-        requestedAt: Date;
-        issuedAt: Date | null;
-        issuedBy: string | null;
-        cancelledAt: Date | null;
+        qrCode: string;
+        isActive: boolean;
     })[]>;
-    consumption(from?: string, to?: string, postId?: string, lineId?: string, projectId?: string): import(".prisma/client").Prisma.PrismaPromise<({
-        post: {
-            line: {
-                project: {
-                    id: string;
-                    name: string;
-                };
-            } & {
-                id: string;
-                name: string;
-                projectId: string;
-            };
-        } & {
-            number: string;
-            id: string;
-            lineId: string;
-        };
-        component: {
-            id: string;
-            reference: string;
-            category: string;
-        };
-    } & {
-        id: string;
+    add(body: {
         postId: string;
-        componentId: string;
-        status: import(".prisma/client").$Enums.RequestStatus;
-        notes: string | null;
-        requestedAt: Date;
-        issuedAt: Date | null;
-        issuedBy: string | null;
-        cancelledAt: Date | null;
-    })[]>;
-    create(body: {
-        componentId: string;
-        postId: string;
-        notes?: string;
+        reference: string;
+        category: string;
     }): Promise<{
         post: {
             line: {
@@ -83,14 +43,14 @@ export declare class RequestsController {
                     name: string;
                 };
             } & {
+                projectId: string;
                 id: string;
                 name: string;
-                projectId: string;
             };
         } & {
             number: string;
-            id: string;
             lineId: string;
+            id: string;
         };
         component: {
             id: string;
@@ -101,18 +61,10 @@ export declare class RequestsController {
         id: string;
         postId: string;
         componentId: string;
-        status: import(".prisma/client").$Enums.RequestStatus;
-        notes: string | null;
-        requestedAt: Date;
-        issuedAt: Date | null;
-        issuedBy: string | null;
-        cancelledAt: Date | null;
+        qrCode: string;
+        isActive: boolean;
     }>;
-    updateStatus(id: string, body: {
-        status: RequestStatus;
-        issuedBy?: string;
-        notes?: string;
-    }): Promise<{
+    remove(id: string): Promise<{
         post: {
             line: {
                 project: {
@@ -120,14 +72,14 @@ export declare class RequestsController {
                     name: string;
                 };
             } & {
+                projectId: string;
                 id: string;
                 name: string;
-                projectId: string;
             };
         } & {
             number: string;
-            id: string;
             lineId: string;
+            id: string;
         };
         component: {
             id: string;
@@ -138,11 +90,42 @@ export declare class RequestsController {
         id: string;
         postId: string;
         componentId: string;
-        status: import(".prisma/client").$Enums.RequestStatus;
-        notes: string | null;
-        requestedAt: Date;
-        issuedAt: Date | null;
-        issuedBy: string | null;
-        cancelledAt: Date | null;
+        qrCode: string;
+        isActive: boolean;
+    }>;
+    regenerateQr(id: string): Promise<{
+        post: {
+            line: {
+                project: {
+                    id: string;
+                    name: string;
+                };
+            } & {
+                projectId: string;
+                id: string;
+                name: string;
+            };
+        } & {
+            number: string;
+            lineId: string;
+            id: string;
+        };
+        component: {
+            id: string;
+            reference: string;
+            category: string;
+        };
+    } & {
+        id: string;
+        postId: string;
+        componentId: string;
+        qrCode: string;
+        isActive: boolean;
+    }>;
+    importExcel(file: Express.Multer.File): Promise<{
+        created: number;
+        reactivated: number;
+        skipped: number;
+        errors: string[];
     }>;
 }

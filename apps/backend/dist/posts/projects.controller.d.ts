@@ -6,13 +6,13 @@ export declare class ProjectsController {
         lines: ({
             posts: {
                 number: string;
-                id: string;
                 lineId: string;
+                id: string;
             }[];
         } & {
+            projectId: string;
             id: string;
             name: string;
-            projectId: string;
         })[];
     } & {
         id: string;

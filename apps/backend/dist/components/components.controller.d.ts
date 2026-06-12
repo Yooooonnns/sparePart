@@ -11,14 +11,14 @@ export declare class ComponentsController {
                     name: string;
                 };
             } & {
+                projectId: string;
                 id: string;
                 name: string;
-                projectId: string;
             };
         } & {
             number: string;
-            id: string;
             lineId: string;
+            id: string;
         };
         component: {
             id: string;

@@ -9,9 +9,9 @@ export declare class PostsController {
                 name: string;
             };
         } & {
+            projectId: string;
             id: string;
             name: string;
-            projectId: string;
         };
         postComponents: ({
             component: {
@@ -28,7 +28,7 @@ export declare class PostsController {
         })[];
     } & {
         number: string;
-        id: string;
         lineId: string;
+        id: string;
     })[]>;
 }
